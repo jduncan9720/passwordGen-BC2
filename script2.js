@@ -1,6 +1,8 @@
 // Assignment Code
 //Which button to assign to generateBtn
 var generateBtn = document.querySelector("#generate");
+//Var for final password
+var finalPass = "";
 
 // Ask how long and which characters will be in the password
 function generatePassword() {
@@ -22,7 +24,7 @@ function generatePassword() {
     var nums = "0123456789";
     var chars = "!@#$%^&*_+~`|\:;?><,./-=";
     var codeSpec = alphaLower;
-
+    
     if (charCase) {
       codeSpec = codeSpec + alphaUpper
     } if (charNum) {
@@ -34,19 +36,18 @@ function generatePassword() {
     }
     console.log("These are your code options " + codeSpec);
     console.log(codeSpec.length);
+    console.log(numLength);
+    for (var i = numLength; i > 0; i--) {
+    // i is the number of characters and keep running the loop until that number is decremented to 0
+    // I need to loop through the codeSpecArray and randomly pick a character to add to finalPass
+    finalPass = codeSpec[Math.floor(Math.random()*codeSpec.length)]
 
-
-    // var shuffled = codeSpec.split('').sort(function () { return 0.5 - Math.random() }).join('');
-
-    // var finalPass = shuffled.substring(0, numLength);
-
-    // console.log(finalPass);
-
-    // which div to put the password into.
-    var passwordText = document.querySelector("#password");
-
-    passwordText.value = codeSpec;
+    }
   }
+  // which div to put the password into.
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = finalPass;
   }
 // Add event listener to generate button
 // Code to activate writePassword function on click
